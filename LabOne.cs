@@ -7,11 +7,11 @@ namespace Program
                     public static void NumberOne()
                     {
                               Console.Write("Enter the name: ");
-                              string name = Console.ReadLine();
+                              string name = Console.ReadLine() ?? throw new Exception("Name is required");
                               Console.Write("Enter the roll no: ");
                               int roll = Convert.ToInt32(Console.ReadLine());
                               Console.Write("Enter the address: ");
-                              string address = Convert.ToString(Console.ReadLine());
+                              string address = Console.ReadLine() ?? throw new Exception("Address is required");
                               Console.WriteLine("---------------------------------");
                               Console.WriteLine("Name: {0} \nRoll no: {1} \nAddress: {2}", name, roll, address);
 
@@ -176,7 +176,7 @@ namespace Program
                     public void NumberTwelve()
                     {
                               Console.Write("Enter the expression: ");
-                              string expression = Console.ReadLine();
+                              string expression = Console.ReadLine() ?? throw new Exception("Expression is required");
                               string[] tokens = expression.Split(' ');
                               Stack<string> stack = new Stack<string>();
                               foreach (string token in tokens)
@@ -226,7 +226,7 @@ namespace Program
                     public void NumberThirteen()
                     {
                               Console.Write("Enter the expression: ");
-                              string expression = Console.ReadLine();
+                              string expression = Console.ReadLine() ?? throw new Exception("Expression is required");
                               string[] tokens = expression.Split(' ');
                               Stack<string> stack = new Stack<string>();
                               foreach (string token in tokens)
@@ -287,7 +287,7 @@ namespace Program
                     public void NumberFourteen()
                     {
                               Console.Write("Enter the string: ");
-                              string str = Console.ReadLine();
+                              string str = Console.ReadLine() ?? throw new Exception("String is required");
                               string rev = "";
                               for (int i = str.Length - 1; i >= 0; i--)
                               {
@@ -307,7 +307,7 @@ namespace Program
                     public void NumberFifteen()
                     {
                               Console.Write("Enter the name: ");
-                              string name = Console.ReadLine();
+                              string name = Console.ReadLine() ?? throw new Exception("Name is required");
                               string[] tokens = name.Split(' ');
                               string abbreviation = "";
                               foreach (string token in tokens)

@@ -4,7 +4,8 @@ namespace Program
           public class LabOne
           {
 
-                    public static void NumberOne()
+                    // Print your name, Roll Number, address on the screen
+                    public void NumberOne()
                     {
                               Console.Write("Enter the name: ");
                               string name = Console.ReadLine() ?? throw new Exception("Name is required");
@@ -17,7 +18,8 @@ namespace Program
 
                     }
 
-                    public static void NumberTwo()
+                    // Display sum of two numbers
+                    public void NumberTwo()
                     {
                               Console.WriteLine("---------SUM CALCULATION---------");
                               Console.Write("Enter the first digit: ");
@@ -28,7 +30,8 @@ namespace Program
                               Console.WriteLine("Sum of {0} + {1} is: {2}", a, b, c);
                     }
 
-                    public static void NumberThree()
+                    //  Input two numbers and find sum, difference, product, quotient and remainder
+                    public void NumberThree()
                     {
                               Console.WriteLine("---------SUM/DIFFERENCE/PRODUCT/QUOTIENT CALCULATION---------");
                               Console.Write("Enter the first digit: ");
@@ -45,6 +48,7 @@ namespace Program
                               Console.WriteLine("Quotient of {0} & {1} is: {2}", a, b, quot);
                     }
 
+                    //Compute Simple interest
                     public void NumberFour()
                     {
                               Console.Write("Enter the principal: ");
@@ -57,6 +61,7 @@ namespace Program
                               Console.WriteLine("The interest is : {0}", interest);
                     }
 
+                    // Compute area of circle
                     public void NumberFive()
                     {
                               Console.Write("Enter the radius of circle: ");
@@ -65,6 +70,7 @@ namespace Program
                               Console.WriteLine("Area of given circle with radisu {0} is {1}", radius, area);
                     }
 
+                    // Input three numbers and print max and min
                     public void NumberSix()
                     {
                               Console.Write("Enter the first digit: ");
@@ -97,6 +103,7 @@ namespace Program
 
                     }
 
+                    // Check if it's a Armstrong number or not
                     public void NumberSeven()
                     {
                               Console.Write("Enter the three digit number: ");
@@ -121,7 +128,7 @@ namespace Program
                     }
 
                     // To print prime numbers between 50 to 100
-                    public static void NumberEight()
+                    public void NumberEight()
                     {
                               Console.WriteLine("---------PRIME NUMBERS BETWEEN 50 TO 100---------");
                               for (int i = 50; i <= 100; i++)
@@ -170,6 +177,39 @@ namespace Program
                               {
                                         Console.WriteLine("{0} * {1} = {2}", a, i, a * i);
                               }
+                    }
+
+                    // Console Calculator
+                    public void NumberEleven()
+                    {
+                              Console.WriteLine("---------CONSOLE CALCULATOR---------");
+                              Console.Write("Enter the first digit: ");
+                              int a = Convert.ToInt32(Console.ReadLine());
+                              Console.Write("Enter the second digit: ");
+                              int b = Convert.ToInt32(Console.ReadLine());
+                              Console.Write("Enter the operator: ");
+                              string op = Console.ReadLine() ?? throw new Exception("Operator is required");
+                              if (op == "+")
+                              {
+                                        Console.WriteLine("{0} + {1} = {2}", a, b, a + b);
+                              }
+                              else if (op == "-")
+                              {
+                                        Console.WriteLine("{0} - {1} = {2}", a, b, a - b);
+                              }
+                              else if (op == "*")
+                              {
+                                        Console.WriteLine("{0} * {1} = {2}", a, b, a * b);
+                              }
+                              else if (op == "/")
+                              {
+                                        Console.WriteLine("{0} / {1} = {2}", a, b, a / b);
+                              }
+                              else
+                              {
+                                        Console.WriteLine("Invalid operator");
+                              }
+
                     }
 
                     // Convert expression in infix to postfix

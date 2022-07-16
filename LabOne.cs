@@ -54,9 +54,9 @@ namespace Program
                               Console.Write("Enter the principal: ");
                               int principal = Convert.ToInt32(Console.ReadLine());
                               Console.Write("Enter the rate: ");
-                              int rate = Convert.ToInt32(Console.ReadLine());
+                              double rate = Convert.ToDouble(Console.ReadLine());
                               Console.Write("Enter the time: ");
-                              int time = Convert.ToInt32(Console.ReadLine());
+                              double time = Convert.ToDouble(Console.ReadLine());
                               double interest = principal * rate * time / 100;
                               Console.WriteLine("The interest is : {0}", interest);
                     }
@@ -215,113 +215,90 @@ namespace Program
                     // Convert expression in infix to postfix
                     public void NumberTwelve()
                     {
-                              Console.Write("Enter the expression: ");
-                              string expression = Console.ReadLine() ?? throw new Exception("Expression is required");
-                              string[] tokens = expression.Split(' ');
-                              Stack<string> stack = new Stack<string>();
-                              foreach (string token in tokens)
+                              Console.WriteLine("---------INFIX TO POSTFIX---------");
+                              Console.Write("Enter the infix expression: ");
+                              string infix = Console.ReadLine() ?? throw new Exception("Infix expression is required");
+                              string postfix = "";
+                              Stack<char> stack = new Stack<char>();
+                              for (int i = 0; i < infix.Length; i++)
                               {
-                                        if (token == "+" || token == "-" || token == "*" || token == "/")
+                                        if (infix[i] == '(')
+                                                  stack.Push('(');
+                                        else if (infix[i] == ')')
                                         {
-                                                  if (stack.Count > 0)
-                                                  {
-                                                            if (GetPrecedence(token) > GetPrecedence(stack.Peek()))
-                                                            {
-                                                                      stack.Push(token);
-                                                            }
-                                                            else
-                                                            {
-                                                                      Console.Write(stack.Pop() + " ");
-                                                                      stack.Push(token);
-                                                            }
-                                                  }
-                                                  else
-                                                  {
-                                                            stack.Push(token);
-                                                  }
+                                                  while (stack.Count > 0 && stack.Peek() != '(')
+                                                            postfix += stack.Pop();
+                                                  stack.Pop();
+                                        }
+                                        else if (infix[i] == '+' || infix[i] == '-' || infix[i] == '*' || infix[i] == '/')
+                                        {
+                                                  while (stack.Count > 0 && stack.Peek() != '(' && precedence(infix[i]) <= precedence(stack.Peek()))
+                                                            postfix += stack.Pop();
+                                                  stack.Push(infix[i]);
                                         }
                                         else
                                         {
-                                                  Console.Write(token + " ");
+                                                  postfix += infix[i];
                                         }
                               }
                               while (stack.Count > 0)
-                              {
-                                        Console.Write(stack.Pop() + " ");
-                              }
+                                        postfix += stack.Pop();
+                              Console.WriteLine("Postfix expression is: {0}", postfix);
                     }
-                    private int GetPrecedence(string token)
+                    public int precedence(char op)
                     {
-                              if (token == "+" || token == "-")
-                              {
+                              if (op == '+' || op == '-')
                                         return 1;
-                              }
                               else
-                              {
                                         return 2;
-                              }
                     }
 
-                    //To evaluate expression in reverse polish notation
+
+
+                    //To evaluate expression in reverse polish nototation
                     public void NumberThirteen()
                     {
+                              Console.WriteLine("---------EVALUATE EXPRESSION---------");
                               Console.Write("Enter the expression: ");
-                              string expression = Console.ReadLine() ?? throw new Exception("Expression is required");
-                              string[] tokens = expression.Split(' ');
+                              string input = Console.ReadLine() ?? throw new Exception("Expression is required");
+                              string[] tokens = input.Split(' ');
                               Stack<string> stack = new Stack<string>();
                               foreach (string token in tokens)
                               {
-                                        if (token == "+" || token == "-" || token == "*" || token == "/")
+                                        switch (token)
                                         {
-                                                  if (stack.Count > 1)
-                                                  {
-                                                            string a = stack.Pop();
-                                                            string b = stack.Pop();
-                                                            stack.Push(Evaluate(b, a, token));
-                                                  }
-                                                  else
-                                                  {
-                                                            Console.WriteLine("Invalid expression");
+                                                  case "+":
+                                                            int a = Convert.ToInt32(stack.Pop());
+                                                            int b = Convert.ToInt32(stack.Pop());
+                                                            int c = a + b;
+                                                            stack.Push(c.ToString());
                                                             break;
-                                                  }
+                                                  case "-":
+                                                            int d = Convert.ToInt32(stack.Pop());
+                                                            int e = Convert.ToInt32(stack.Pop());
+                                                            int f = e - d;
+                                                            stack.Push(f.ToString());
+                                                            break;
+                                                  case "*":
+                                                            int g = Convert.ToInt32(stack.Pop());
+                                                            int h = Convert.ToInt32(stack.Pop());
+                                                            int i = g * h;
+                                                            stack.Push(i.ToString());
+                                                            break;
+                                                  case "/":
+                                                            int j = Convert.ToInt32(stack.Pop());
+                                                            int k = Convert.ToInt32(stack.Pop());
+                                                            int l = k / j;
+                                                            stack.Push(l.ToString());
+                                                            break;
+                                                  default:
+                                                            stack.Push(token);
+                                                            break;
                                         }
-                                        else
-                                        {
-                                                  stack.Push(token);
-                                        }
                               }
-                              if (stack.Count == 1)
-                              {
-                                        Console.WriteLine(stack.Pop());
-                              }
-                              else
-                              {
-                                        Console.WriteLine("Invalid expression");
-                              }
-                    }
 
-                    private string Evaluate(string b, string a, string token)
-                    {
-                              int num1 = Convert.ToInt32(b);
-                              int num2 = Convert.ToInt32(a);
-                              if (token == "+")
-                              {
-                                        return (num1 + num2).ToString();
-                              }
-                              else if (token == "-")
-                              {
-                                        return (num1 - num2).ToString();
-                              }
-                              else if (token == "*")
-                              {
-                                        return (num1 * num2).ToString();
-                              }
-                              else
-                              {
-                                        return (num1 / num2).ToString();
-                              }
+                              Console.WriteLine("Result: {0}", stack.Peek());
                     }
-
 
                     //to verify if a string is a palindrome or not
                     public void NumberFourteen()

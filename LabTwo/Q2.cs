@@ -1,22 +1,18 @@
 namespace Program
 {
-
-          class Demo
+          class ContructorDemo
           {
-                    public void demoMethod()
+                    public ContructorDemo()
                     {
                               Console.WriteLine("Hello World");
                     }
           }
 
-          class Q1
+          class Q2
           {
-                    public Q1()
+                    public Q2()
                     {
-                              Demo d = new Demo();
-                              d.demoMethod();
+                              ContructorDemo d = new ContructorDemo();
                     }
           }
-
-
 }

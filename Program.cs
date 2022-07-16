@@ -6,9 +6,9 @@
                     public static void Main(string[] args)
                     {
                               LabOne obj = new LabOne();
-                              Console.WriteLine("Name:Abhishek Bhatta and CRN:019-312");
                               Console.Write("Choose a number between 1 and 15:");
                               int number = Convert.ToInt32(Console.ReadLine());
+                              Console.WriteLine("\n\nName:sakshi poudyal and CRN:019-351\n");
                               switch (number)
                               {
                                         case 1: obj.NumberOne(); break;
@@ -27,10 +27,9 @@
                                         case 14: obj.NumberFourteen(); break;
                                         case 15: obj.NumberFifteen(); break;
                                         default: Console.WriteLine("Invalid Input"); break;
-
-
-
                               }
+
+                              Console.WriteLine("\n\n");
                     }
           }
 

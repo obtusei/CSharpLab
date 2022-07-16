@@ -6,9 +6,10 @@
                     public static void Main(string[] args)
                     {
                               LabOne obj = new LabOne();
+                              Console.WriteLine("Name:Abhishek Bhatta and CRN:019-312\n");
                               Console.Write("Choose a number between 1 and 15:");
                               int number = Convert.ToInt32(Console.ReadLine());
-                              Console.WriteLine("\n\nName:sakshi poudyal and CRN:019-351\n");
+                              Console.WriteLine("\n");
                               switch (number)
                               {
                                         case 1: obj.NumberOne(); break;
